@@ -1,7 +1,8 @@
 import './App.css';
+import AppUI from './AppUI';
 
 function App() {
-  return <p>Hello World!</p>;
+  return <AppUI />;
 }
 
 export default App;

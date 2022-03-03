@@ -1,0 +1,26 @@
+#apiForm {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px auto;
+}
+
+#apiForm fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+#apiForm label {
+  margin-bottom: 10px;
+}
+#apiForm input {
+  height: 35px;
+}
+
+#apiForm p {
+  font-size: small;
+  margin: 7px 0;
+  color: rgb(90 87 87);
+}
