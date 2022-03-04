@@ -2,28 +2,55 @@ import { useState } from 'react';
 import './Form.css';
 
 const Form = () => {
-  const [newTokenValue, setNewTokenValue] = useState('');
-  const [newSeriesValue, setNewSeriesValue] = useState('');
+  const [Token, setNewToken] = useState('');
+  const [Series, setNewSeries] = useState('');
+  const [data, setData] = useState(null);
+
+  const API_URL = (series, token) =>
+    `https://www.banxico.org.mx/SieAPIRest/service/v1/series/${series}?token=${token}`;
+
+  const API_URL_SERIES = API_URL(Series, Token);
+
+  const fetchData = (url, options = null) => {
+    try {
+      fetch(url, options)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Network response was not OK');
+          }
+          return res.json();
+        })
+        .then(data => {
+          setData(data);
+          console.log(data);
+        });
+    } catch (error) {
+      console.error(
+        'There has been a problem with the fetch operation:',
+        error
+      );
+    }
+    return { data };
+  };
 
   const onChangeToken = event => {
-    setNewTokenValue(event.target.value);
+    setNewToken(event.target.value);
   };
 
   const onChangeSeries = event => {
-    setNewSeriesValue(event.target.value);
+    setNewSeries(event.target.value);
   };
 
   const onSubmit = event => {
     event.preventDefault();
-    if (!newTokenValue || !newSeriesValue) {
+    if (!Token && !Series) {
       return null;
     }
-    console.log(newTokenValue);
-    console.log(newSeriesValue);
+    fetchData(API_URL_SERIES);
   };
 
   const onKeyUp = event => {
-    if (event.charCode === 13) {
+    if (event.key === 'Enter') {
       onSubmit(event);
     }
   };
@@ -35,7 +62,7 @@ const Form = () => {
         <input
           itemType='text'
           id='token'
-          value={newTokenValue}
+          value={Token}
           onChange={onChangeToken}
           placeholder='Add Your Token'
           minLength={64}
@@ -54,7 +81,7 @@ const Form = () => {
         <input
           itemType='text'
           id='series'
-          value={newSeriesValue}
+          value={Series}
           onChange={onChangeSeries}
           placeholder='Add Series Number'
           required
