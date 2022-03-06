@@ -1,8 +1,13 @@
-import './App.css';
+import { FetchProvider } from '../contexts';
 import AppUI from './AppUI';
+import './App.css';
 
 function App() {
-  return <AppUI />;
+  return (
+    <FetchProvider>
+      <AppUI />
+    </FetchProvider>
+  );
 }
 
 export default App;
