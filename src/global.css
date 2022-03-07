@@ -26,3 +26,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input[type='text'] {
+  font-size: inherit;
+  font-family: inherit;
+}
