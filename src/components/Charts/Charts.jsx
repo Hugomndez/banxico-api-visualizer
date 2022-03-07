@@ -1,22 +1,48 @@
 import { useContext } from 'react';
 import { FetchContext } from '../../contexts';
 import { ChartsLoader } from '../../components';
+// eslint-disable-next-line
+import Chart from 'chart.js/auto';
+import { Line } from 'react-chartjs-2';
 import './Charts.css';
 
 const Charts = () => {
   const { status, data } = useContext(FetchContext);
 
+  const ChartFormat = dataset => {
+    let parsed = {};
+    parsed.labels = dataset.map(item => item.fecha);
+    parsed.datasets = [
+      {
+        data: dataset.map(item => Number(item.dato)),
+        borderColor: 'rgb(17, 71, 217)',
+        backgroundColor: 'rgb(17, 71, 217)',
+        pointRadius: 0,
+      },
+    ];
+    return parsed;
+  };
+
   return (
     <section>
-      {/* {status === 'idle' && <p>busquemos una series</p>} */}
+      {/* {status === 'idle' && <p>Fetch for banxico series</p>} */}
       {status === 'fetching' && <ChartsLoader />}
       {status === 'fetched' && (
-        <div>
-          <h2>Fetch Results:</h2>
+        <div className='results-wrapper'>
           {data.bmx.series.map(item => (
-            <div key={item.idSerie}>
-              <p>{item.idSerie}</p>
-              <p>{item.titulo}</p>
+            <div key={item.idSerie} className='item'>
+              <p className='item-id'>{item.idSerie}</p>
+              <span>--</span>
+              <p className='item-title'>{item.titulo}</p>
+              <div className='item-chart'>
+                <Line
+                  options={{
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                  }}
+                  data={ChartFormat(item.datos)}
+                />
+              </div>
             </div>
           ))}
         </div>
