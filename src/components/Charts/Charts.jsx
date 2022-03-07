@@ -4,6 +4,7 @@ import { ChartsLoader } from '../../components';
 // eslint-disable-next-line
 import Chart from 'chart.js/auto';
 import { Line, Bar } from 'react-chartjs-2';
+import { saveAs } from 'file-saver';
 import './Charts.css';
 
 const Charts = () => {
@@ -22,6 +23,13 @@ const Charts = () => {
       },
     ];
     return parsed;
+  };
+
+  const saveChart = item => {
+    const itemChart = document.getElementById(item);
+    itemChart.toBlob(blob => {
+      saveAs(blob, `Series-${item}.jpg`);
+    });
   };
 
   return (
@@ -60,6 +68,7 @@ const Charts = () => {
                 <div className='item-chart'>
                   {chartType === 'Line' && (
                     <Line
+                      id={item.idSerie}
                       options={{
                         responsive: true,
                         plugins: { legend: { display: false } },
@@ -69,6 +78,7 @@ const Charts = () => {
                   )}
                   {chartType === 'Bar' && (
                     <Bar
+                      id={item.idSerie}
                       options={{
                         responsive: true,
                         plugins: { legend: { display: false } },
@@ -77,9 +87,15 @@ const Charts = () => {
                     />
                   )}
                 </div>
-                {/* <button type='button' className='item-button'>
+                <button
+                  type='button'
+                  className='item-button'
+                  onClick={() => {
+                    saveChart(item.idSerie);
+                  }}
+                >
                   Download Chart
-                </button> */}
+                </button>
               </div>
             ))}
           </div>
