@@ -26,8 +26,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-input[type='text'] {
-  font-size: 16px;
-  font-family: var(--ff-content);
-}
