@@ -21,6 +21,11 @@ const Form = () => {
       return null;
     }
 
+    if (tokenToFetch.length !== 64) {
+      return null;
+      //Handle Wrong token.
+    }
+
     setQuery(seriesToFetch);
 
     setToken(tokenToFetch);
@@ -37,13 +42,11 @@ const Form = () => {
           id='token'
           name='token'
           placeholder='Add Banxico Token'
-          minLength={64}
-          maxLength={64}
           required
           autoFocus
         ></input>
         <p>
-          You need a Banxico token. You can find it on:{' '}
+          You need a Banxico token. You can find it on: <br></br>
           <a href='https://www.banxico.org.mx/SieAPIRest/service/v1/token'>
             https://www.banxico.org.mx/SieAPIRest/service/v1/token
           </a>
@@ -51,6 +54,7 @@ const Form = () => {
       </fieldset>
       <fieldset>
         <label htmlFor='series'>Series</label>
+
         <input
           itemType='text'
           id='series'
@@ -58,9 +62,12 @@ const Form = () => {
           placeholder='Add Banxico Series'
           required
         ></input>
+
         <p>Example: SF61745, SP68257</p>
       </fieldset>
-      <button type='submit'>Fetch</button>
+      <fieldset>
+        <button type='submit'>Fetch</button>
+      </fieldset>
     </form>
   );
 };
