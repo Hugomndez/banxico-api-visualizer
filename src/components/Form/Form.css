@@ -30,8 +30,6 @@
 #apiForm button {
   height: 35px;
   width: 80px;
-  margin-top: 32px;
-  margin-bottom: 30px;
 }
 
 @media screen and (min-width: 900px) {
@@ -49,5 +47,10 @@
 
   #apiForm input {
     width: 400px;
+  }
+
+  #apiForm button {
+    margin-top: 32px;
+    margin-bottom: 30px;
   }
 }

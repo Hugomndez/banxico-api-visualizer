@@ -1,12 +1,12 @@
 section {
   width: 100%;
   height: auto;
+  padding: 50px 0;
   display: grid;
   place-items: center;
 }
 
 .results-wrapper {
-  max-width: 80%;
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
@@ -18,7 +18,8 @@ section {
 }
 
 .item {
-  width: 300px;
+  width: 350px;
+  height: auto;
   padding: 5px;
   border: 1px solid gray;
 }
@@ -35,14 +36,24 @@ section {
   border-top: 1px solid gray;
 }
 
+.item-button {
+  padding: 5px;
+  margin: 5px;
+}
+
 @media screen and (min-width: 900px) {
+  section {
+    padding: 100px 0;
+  }
+
   .results-wrapper {
+    max-width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 10px;
   }
 
   .item {
     width: 450px;
-    height: 362px;
+    height: 400px;
   }
 }
