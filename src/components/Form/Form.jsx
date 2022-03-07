@@ -5,6 +5,17 @@ import './Form.css';
 const Form = () => {
   const { setQuery, setToken } = useContext(FetchContext);
 
+  let platform =
+    navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
+
+  const isIOS = () => {
+    return (
+      (/iPad|iPhone|iPod/.test(platform) ||
+        (platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
+      !window.MSStream
+    );
+  };
+
   const getIOSInputEventHandlers = () => {
     if (isIOS()) {
       return {};
