@@ -28,6 +28,6 @@ body {
 }
 
 input[type='text'] {
-  font-size: inherit;
-  font-family: inherit;
+  font-size: 16px;
+  font-family: var(--ff-content);
 }
