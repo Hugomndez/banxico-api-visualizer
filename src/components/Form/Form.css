@@ -17,6 +17,7 @@
 }
 #apiForm input {
   height: 35px;
+  padding: 5px;
 }
 
 #apiForm p {

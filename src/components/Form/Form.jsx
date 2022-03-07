@@ -36,7 +36,7 @@ const Form = () => {
           itemType='text'
           id='token'
           name='token'
-          placeholder='Add Your Token'
+          placeholder='Add Banxico Token'
           minLength={64}
           maxLength={64}
           required
@@ -55,7 +55,7 @@ const Form = () => {
           itemType='text'
           id='series'
           name='series'
-          placeholder='Add Series Number'
+          placeholder='Add Banxico Series'
           required
         ></input>
         <p>Example: SF61745, SP68257</p>
