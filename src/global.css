@@ -1,5 +1,7 @@
 :root {
   /*Fonts*/
+  --ff-titles: 'Fjalla One', sans-serif;
+  --ff-content: 'Noto Sans', sans-serif;
   /*Colors*/
   /*Sizes*/
   --h1: 3rem;
@@ -20,6 +22,7 @@ html {
 
 body {
   font-size: var(--p);
+  font-family: var(--ff-content);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

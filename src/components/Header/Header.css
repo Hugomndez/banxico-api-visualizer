@@ -8,5 +8,6 @@ header {
 h1 {
   text-transform: uppercase;
   font-size: var(--h1);
+  font-family: var(--ff-titles);
   text-align: center;
 }

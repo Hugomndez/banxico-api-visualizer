@@ -19,7 +19,6 @@ const useFetch = (url, options) => {
         cache.current[url] = data;
         setData(data);
         setStatus('fetched');
-        console.log(data);
       }
     };
 
