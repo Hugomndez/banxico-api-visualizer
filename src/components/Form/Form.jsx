@@ -5,32 +5,6 @@ import './Form.css';
 const Form = () => {
   const { setQuery, setToken } = useContext(FetchContext);
 
-  let platform =
-    navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
-
-  const isIOS = () => {
-    return (
-      (/iPad|iPhone|iPod/.test(platform) ||
-        (platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
-      !window.MSStream
-    );
-  };
-
-  const getIOSInputEventHandlers = () => {
-    if (isIOS()) {
-      return {};
-    }
-
-    return {
-      onTouchStart: event => {
-        event.currentTarget.style.fontSize = '16px';
-      },
-      onBlur: event => {
-        event.currentTarget.style.fontSize = '';
-      },
-    };
-  };
-
   const onKeyEnter = async event => {
     if (event.key === 'Enter') {
       await handleSubmit(event);
@@ -64,7 +38,6 @@ const Form = () => {
       <fieldset>
         <label htmlFor='token'>Token</label>
         <input
-          {...getIOSInputEventHandlers()}
           itemType='text'
           id='token'
           name='token'
@@ -83,7 +56,6 @@ const Form = () => {
         <label htmlFor='series'>Series</label>
 
         <input
-          {...getIOSInputEventHandlers()}
           itemType='text'
           id='series'
           name='series'
@@ -91,7 +63,7 @@ const Form = () => {
           required
         ></input>
 
-        <p>Example: SF61745, SP68257</p>
+        <p>Example: SF61745,SP68257</p>
       </fieldset>
       <fieldset>
         <button type='submit'>Fetch</button>
