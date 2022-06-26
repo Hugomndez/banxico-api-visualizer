@@ -1,10 +1,9 @@
-import { useContext, useState } from 'react';
-import { FetchContext } from '../../contexts';
-import { ChartsLoader } from '../../components';
-// eslint-disable-next-line
-import Chart from 'chart.js/auto';
-import { Line, Bar } from 'react-chartjs-2';
 import { saveAs } from 'file-saver';
+import { useContext, useState } from 'react';
+import { Bar, Line } from 'react-chartjs-2';
+import { ChartsLoader } from '../../components';
+import { FetchContext } from '../../contexts';
+
 import './Charts.css';
 
 const Charts = () => {
