@@ -1,4 +1,3 @@
-import { saveAs } from 'file-saver';
 import { useContext, useState } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import { ChartsLoader } from '../../components';
@@ -24,7 +23,8 @@ const Charts = () => {
     return parsed;
   };
 
-  const saveChart = item => {
+  const saveChart = async item => {
+    const saveAs = (await import('file-saver')).default;
     const itemChart = document.getElementById(item);
     itemChart.toBlob(blob => {
       saveAs(blob, `Series-${item}.jpg`);
@@ -33,7 +33,7 @@ const Charts = () => {
 
   return (
     <section>
-      {/* {status === 'idle' && <p>Handle empty chart</p> */}
+      {status === 'idle' && <p>Handle empty chart</p>}
       {status === 'fetching' && <ChartsLoader title={status} />}
       {status === 'fetched' && (
         <>

@@ -12,7 +12,7 @@ const Form = () => {
     }
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     const tokenToFetch = event.currentTarget.token.value;
@@ -32,6 +32,9 @@ const Form = () => {
     setToken(tokenToFetch);
 
     event.currentTarget.series.value = '';
+
+    // eslint-disable-next-line no-unused-vars
+    const Chart = (await import('chart.js/auto')).default;
   };
 
   return (
