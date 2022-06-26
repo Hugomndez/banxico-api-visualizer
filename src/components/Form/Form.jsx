@@ -47,7 +47,11 @@ const Form = () => {
         ></input>
         <p>
           You need a Banxico token. You can find it on: <br></br>
-          <a href='https://www.banxico.org.mx/SieAPIRest/service/v1/token'>
+          <a
+            href='https://www.banxico.org.mx/SieAPIRest/service/v1/token'
+            target='_blank'
+            rel='noreferrer'
+          >
             https://www.banxico.org.mx/SieAPIRest/service/v1/token
           </a>
         </p>
